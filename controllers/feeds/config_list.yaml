@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/adrenth/rssfetcher/models/feed/columns.yaml
+list: $/khalilthiero/rssfetcher/models/feed/columns.yaml
 
 # Model Class name
-modelClass: Adrenth\RssFetcher\Models\Feed
+modelClass: Khalilthiero\RssFetcher\Models\Feed
 
 # List Title
-title: adrenth.rssfetcher::lang.feed.manage_feeds
+title: khalilthiero.rssfetcher::lang.feed.manage_feeds
 
 # Link URL for each record
-recordUrl: adrenth/rssfetcher/feeds/update/:id
+recordUrl: khalilthiero/rssfetcher/feeds/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

@@ -3,25 +3,25 @@
 # ===================================
 
 # Record name
-name: adrenth.rssfetcher::lang.item.item
+name: khalilthiero.rssfetcher::lang.item.item
 
 # Model Form Field configuration
-form: $/adrenth/rssfetcher/models/item/fields.yaml
+form: $/khalilthiero/rssfetcher/models/item/fields.yaml
 
 # Model Class name
-modelClass: Adrenth\RssFetcher\Models\Item
+modelClass: Khalilthiero\RssFetcher\Models\Item
 
 # Default redirect location
-defaultRedirect: adrenth/rssfetcher/items
+defaultRedirect: khalilthiero/rssfetcher/items
 
 # Create page
 create:
-    title: adrenth.rssfetcher::lang.item.create_item
-    redirect: adrenth/rssfetcher/items/update/:id
-    redirectClose: adrenth/rssfetcher/items
+    title: khalilthiero.rssfetcher::lang.item.create_item
+    redirect: khalilthiero/rssfetcher/items/update/:id
+    redirectClose: khalilthiero/rssfetcher/items
 
 # Update page
 update:
-    title: adrenth.rssfetcher::lang.item.edit_item
-    redirect: adrenth/rssfetcher/items
-    redirectClose: adrenth/rssfetcher/items
+    title: khalilthiero.rssfetcher::lang.item.edit_item
+    redirect: khalilthiero/rssfetcher/items
+    redirectClose: khalilthiero/rssfetcher/items

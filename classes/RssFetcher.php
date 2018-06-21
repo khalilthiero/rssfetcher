@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Adrenth\RssFetcher\Classes;
+namespace Khalilthiero\RssFetcher\Classes;
 
-use Adrenth\RssFetcher\Models\Item;
-use Adrenth\RssFetcher\Models\Source;
+use Khalilthiero\RssFetcher\Models\Item;
+use Khalilthiero\RssFetcher\Models\Source;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Collection;
@@ -17,7 +17,7 @@ use Zend\Feed\Reader\Reader;
 /**
  * Class RssFetcher
  *
- * @package Adrenth\RssFetcher\Classes
+ * @package Khalilthiero\RssFetcher\Classes
  */
 class RssFetcher
 {
@@ -62,7 +62,7 @@ class RssFetcher
                 'title' => $item->getTitle(),
                 'link' => $item->getLink(),
                 'description' => strip_tags($item->getContent()),
-                'category' => implode(', ', $item->getCategories()->getValues()),
+                'tags' => implode(', ', $item->getCategories()->getValues()),
                 'comments' => $item->getCommentLink(),
                 'pub_date' => $dateCreated !== null ? $item->getDateCreated()->format('Y-m-d H:i:s') : null,
                 'is_published' => $source->getAttribute('publish_new_items')

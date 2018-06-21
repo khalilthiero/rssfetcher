@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Adrenth\RssFetcher\ReportWidgets;
+namespace Khalilthiero\RssFetcher\ReportWidgets;
 
-use Adrenth\RssFetcher\Components\Items;
+use Khalilthiero\RssFetcher\Components\Items;
 use Backend\Classes\ReportWidgetBase;
 use Lang;
 
 /**
  * Class Headlines
  *
- * @package Adrenth\RssFetcher\ReportWidgets
+ * @package Khalilthiero\RssFetcher\ReportWidgets
  */
 class Headlines extends ReportWidgetBase
 {
@@ -21,8 +21,8 @@ class Headlines extends ReportWidgetBase
     public function widgetDetails(): array
     {
         return [
-            'name' => 'adrenth.rssfetcher::lang.report_widget.headlines.name',
-            'description' => 'adrenth.rssfetcher::lang.report_widget.headlines.name',
+            'name' => 'khalilthiero.rssfetcher::lang.report_widget.headlines.name',
+            'description' => 'khalilthiero.rssfetcher::lang.report_widget.headlines.name',
         ];
     }
 
@@ -33,21 +33,21 @@ class Headlines extends ReportWidgetBase
     {
         return [
             'title' => [
-                'title' => 'adrenth.rssfetcher::lang.report_widget.headlines.title_title',
-                'default' => Lang::get('adrenth.rssfetcher::lang.report_widget.headlines.title_default'),
+                'title' => 'khalilthiero.rssfetcher::lang.report_widget.headlines.title_title',
+                'default' => Lang::get('khalilthiero.rssfetcher::lang.report_widget.headlines.title_default'),
                 'type' => 'string',
                 'validationPattern' => '^.+$',
-                'validationMessage' => 'adrenth.rssfetcher::lang.report_widget.headlines.title_required',
+                'validationMessage' => 'khalilthiero.rssfetcher::lang.report_widget.headlines.title_required',
             ],
             'maxItems' => [
-                'title' => 'adrenth.rssfetcher::lang.report_widget.headlines.max_items_title',
+                'title' => 'khalilthiero.rssfetcher::lang.report_widget.headlines.max_items_title',
                 'default' => '5',
                 'type' => 'string',
                 'validationPattern' => '^[0-9]+$',
             ],
             'dateFormat' => [
-                'title' => 'adrenth.rssfetcher::lang.report_widget.headlines.date_format_title',
-                'description' => 'adrenth.rssfetcher::lang.report_widget.headlines.date_format_description',
+                'title' => 'khalilthiero.rssfetcher::lang.report_widget.headlines.date_format_title',
+                'description' => 'khalilthiero.rssfetcher::lang.report_widget.headlines.date_format_description',
                 'default' => 'Y-m-d H:i',
                 'type' => 'string',
             ],

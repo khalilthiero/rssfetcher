@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Adrenth\RssFetcher\Updates;
+namespace Khalilthiero\RssFetcher\Updates;
 
-use Adrenth\RssFetcher\Models\Source;
+use Khalilthiero\RssFetcher\Models\Source;
 use October\Rain\Database\Updates\Seeder;
 
 /** @noinspection AutoloadingIssuesInspection */
@@ -12,7 +12,7 @@ use October\Rain\Database\Updates\Seeder;
 /**
  * Class SeedAllTables
  *
- * @package Adrenth\RssFetcher\Updates
+ * @package Khalilthiero\RssFetcher\Updates
  */
 class SeedAllTables extends Seeder
 {

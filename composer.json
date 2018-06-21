@@ -1,5 +1,5 @@
 {
-    "name": "adrenth/rss-fetcher",
+    "name": "khalilthiero/rss-fetcher",
     "description": "Fetches RSS headlines from various sources to put on your website",
     "type": "october-plugin",
     "keywords": ["october", "cms", "rss", "plugin"],
@@ -7,7 +7,7 @@
     "authors": [
         {
             "name": "Alwin Drenth",
-            "email": "adrenth@gmail.com"
+            "email": "khalilthiero@gmail.com"
         }
     ],
     "require": {

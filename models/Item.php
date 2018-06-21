@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Adrenth\RssFetcher\Models;
+namespace Khalilthiero\RssFetcher\Models;
 
 use Model;
 use October\Rain\Database\Builder;
@@ -10,14 +10,14 @@ use October\Rain\Database\Builder;
 /**
  * Class Item
  *
- * @package Adrenth\RssFetcher\Models
+ * @package Khalilthiero\RssFetcher\Models
  */
 class Item extends Model
 {
     /**
      * {@inheritdoc}
      */
-    public $table = 'adrenth_rssfetcher_items';
+    public $table = 'khalilthiero_rssfetcher_items';
 
     /**
      * {@inheritdoc}
@@ -25,11 +25,12 @@ class Item extends Model
     protected $fillable = [
         'source_id',
         'item_id',
+        'post_id',
         'title',
         'link',
         'description',
         'author',
-        'category',
+        'tags',
         'comments',
         'enclosure_url',
         'enclosure_length',

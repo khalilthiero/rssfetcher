@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Adrenth\RssFetcher\Models;
+namespace Khalilthiero\RssFetcher\Models;
 
 use Model;
 use October\Rain\Database\Traits\Validation;
@@ -10,7 +10,7 @@ use October\Rain\Database\Traits\Validation;
 /**
  * Class Feed
  *
- * @package Adrenth\RssFetcher\Models
+ * @package Khalilthiero\RssFetcher\Models
  */
 class Feed extends Model
 {
@@ -19,7 +19,7 @@ class Feed extends Model
     /**
      * {@inheritdoc}
      */
-    public $table = 'adrenth_rssfetcher_feeds';
+    public $table = 'khalilthiero_rssfetcher_feeds';
 
     /**
      * {@inheritdoc}
@@ -27,7 +27,7 @@ class Feed extends Model
     public $belongsToMany = [
         'sources' => [
             Source::class,
-            'table' => 'adrenth_rssfetcher_feeds_sources',
+            'table' => 'khalilthiero_rssfetcher_feeds_sources',
             'order' => 'name',
         ],
     ];
@@ -39,7 +39,7 @@ class Feed extends Model
         'path' => [
             'required',
             'regex:/^[a-z0-9\/\:_\-\*\[\]\+\?\|]*$/i',
-            'unique:adrenth_rssfetcher_feeds'
+            'unique:khalilthiero_rssfetcher_feeds'
         ],
         'type' => 'required'
     ];

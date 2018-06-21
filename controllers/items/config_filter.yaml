@@ -6,10 +6,10 @@ scopes:
     source:
 
         # Filter name
-        label: adrenth.rssfetcher::lang.source.source
+        label: khalilthiero.rssfetcher::lang.source.source
 
         # Model Class name
-        modelClass: Adrenth\RssFetcher\Models\Source
+        modelClass: Khalilthiero\RssFetcher\Models\Source
 
         # Model attribute to display for the name
         nameFrom: name
@@ -20,7 +20,7 @@ scopes:
     is_published:
 
         # Filter name
-        label: adrenth.rssfetcher::lang.item.hide_published
+        label: khalilthiero.rssfetcher::lang.item.hide_published
 
         # Filter type
         type: checkbox

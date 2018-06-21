@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Adrenth\RssFetcher\Commands;
+namespace Khalilthiero\RssFetcher\Commands;
 
-use Adrenth\RssFetcher\Classes\RssFetcher;
+use Khalilthiero\RssFetcher\Classes\RssFetcher;
 use Exception;
 use Illuminate\Console\Command;
 use RuntimeException;
@@ -13,14 +13,14 @@ use Symfony\Component\Console\Input\InputArgument;
 /**
  * Class FetchRssCommand
  *
- * @package Adrenth\RssFetcher\Commands
+ * @package Khalilthiero\RssFetcher\Commands
  */
 class FetchRssCommand extends Command
 {
     /**
      * {@inheritdoc}
      */
-    protected $name = 'adrenth:fetch-rss';
+    protected $name = 'khalilthiero:fetch-rss';
 
     /**
      * {@inheritdoc}

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Adrenth\RssFetcher\Components;
+namespace Khalilthiero\RssFetcher\Components;
 
-use Adrenth\RssFetcher\Models\Item;
+use Khalilthiero\RssFetcher\Models\Item;
 use Cms\Classes\ComponentBase;
 use InvalidArgumentException;
 use October\Rain\Support\Collection;
@@ -12,7 +12,7 @@ use October\Rain\Support\Collection;
 /**
  * Class Items
  *
- * @package Adrenth\RssFetcher\Components
+ * @package Khalilthiero\RssFetcher\Components
  */
 class Items extends ComponentBase
 {
@@ -27,8 +27,8 @@ class Items extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'adrenth.rssfetcher::lang.component.item_list.name',
-            'description' => 'adrenth.rssfetcher::lang.component.item_list.description'
+            'name' => 'khalilthiero.rssfetcher::lang.component.item_list.name',
+            'description' => 'khalilthiero.rssfetcher::lang.component.item_list.description'
         ];
     }
 
@@ -39,12 +39,12 @@ class Items extends ComponentBase
     {
         return [
             'maxItems' => [
-                'label' => 'adrenth.rssfetcher::lang.item.max_items',
+                'label' => 'khalilthiero.rssfetcher::lang.item.max_items',
                 'type' => 'string',
                 'default' => '10'
             ],
             'sourceId' => [
-                'label' => 'adrenth.rssfetcher::lang.item.source_id',
+                'label' => 'khalilthiero.rssfetcher::lang.item.source_id',
                 'type' => 'string',
                 'default' => ''
             ]
@@ -74,20 +74,20 @@ class Items extends ComponentBase
     public static function loadItems(int $maxItems, int $sourceId = null): array
     {
         try {
-            $items = Item::select(['adrenth_rssfetcher_items.*', 'adrenth_rssfetcher_sources.name AS source'])
+            $items = Item::select(['khalilthiero_rssfetcher_items.*', 'khalilthiero_rssfetcher_sources.name AS source'])
                 ->join(
-                    'adrenth_rssfetcher_sources',
-                    'adrenth_rssfetcher_items.source_id',
+                    'khalilthiero_rssfetcher_sources',
+                    'khalilthiero_rssfetcher_items.source_id',
                     '=',
-                    'adrenth_rssfetcher_sources.id'
+                    'khalilthiero_rssfetcher_sources.id'
                 )
-                ->where('adrenth_rssfetcher_sources.is_enabled', '=', 1)
-                ->where('adrenth_rssfetcher_items.is_published', '=', 1)
-                ->orderBy('adrenth_rssfetcher_items.pub_date', 'desc')
+                ->where('khalilthiero_rssfetcher_sources.is_enabled', '=', 1)
+                ->where('khalilthiero_rssfetcher_items.is_published', '=', 1)
+                ->orderBy('khalilthiero_rssfetcher_items.pub_date', 'desc')
                 ->limit($maxItems);
 
             if ($sourceId !== null && is_numeric($sourceId)) {
-                $items->where('adrenth_rssfetcher_items.source_id', '=', (int) $sourceId);
+                $items->where('khalilthiero_rssfetcher_items.source_id', '=', (int) $sourceId);
             }
         } catch (InvalidArgumentException $e) {
             return [];

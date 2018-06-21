@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Adrenth\RssFetcher\Controllers;
+namespace Khalilthiero\RssFetcher\Controllers;
 
-use Adrenth\RssFetcher\Classes\RssFetcher;
-use Adrenth\RssFetcher\Exceptions\SourceNotEnabledException;
-use Adrenth\RssFetcher\Models\Source;
+use Khalilthiero\RssFetcher\Classes\RssFetcher;
+use Khalilthiero\RssFetcher\Exceptions\SourceNotEnabledException;
+use Khalilthiero\RssFetcher\Models\Source;
 use ApplicationException;
 use Artisan;
 use Backend\Behaviors\FormController;
@@ -21,7 +21,7 @@ use Lang;
 /**
  * Sources Back-end Controller
  *
- * @package Adrenth\RssFetcher\Controllers
+ * @package Khalilthiero\RssFetcher\Controllers
  * @mixin FormController
  * @mixin ListController
  * @mixin ImportExportController
@@ -53,7 +53,7 @@ class Sources extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('Adrenth.RssFetcher', 'rssfetcher', 'sources');
+        BackendMenu::setContext('khalilthiero.RssFetcher', 'rssfetcher', 'sources');
     }
 
     /**
@@ -68,17 +68,17 @@ class Sources extends Controller
             $source = Source::findOrFail($this->params[0]);
 
             if ($source instanceof Source && !$source->getAttribute('is_enabled')) {
-                throw new SourceNotEnabledException(Lang::get('adrenth.rssfetcher::lang.source.source_not_enabled'));
+                throw new SourceNotEnabledException(Lang::get('khalilthiero.rssfetcher::lang.source.source_not_enabled'));
             }
 
             RssFetcher::instance()->fetch((int) $this->params[0]);
 
-            Flash::success(Lang::get('adrenth.rssfetcher::lang.source.items_fetch_success'));
+            Flash::success(Lang::get('khalilthiero.rssfetcher::lang.source.items_fetch_success'));
         } catch (SourceNotEnabledException $e) {
             Flash::warning($e->getMessage());
         } catch (Exception $e) {
             throw new ApplicationException(
-                Lang::get('adrenth.rssfetcher::lang.source.items_fetch_fail', [
+                Lang::get('khalilthiero.rssfetcher::lang.source.items_fetch_fail', [
                     'error' => $e->getMessage()
                 ])
             );

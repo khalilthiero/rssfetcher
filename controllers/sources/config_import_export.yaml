@@ -3,14 +3,14 @@
 # ===================================
 
 import:
-    title: adrenth.rssfetcher::lang.source.import_sources
-    modelClass: Adrenth\RssFetcher\Models\SourceImport
-    list: $/adrenth/rssfetcher/models/sourceimport/columns.yaml
-    redirect: adrenth/rssfetcher/sources
+    title: khalilthiero.rssfetcher::lang.source.import_sources
+    modelClass: Khalilthiero\RssFetcher\Models\SourceImport
+    list: $/khalilthiero/rssfetcher/models/sourceimport/columns.yaml
+    redirect: khalilthiero/rssfetcher/sources
 export:
-    title: adrenth.rssfetcher::lang.source.export_sources
-    modelClass: Adrenth\RssFetcher\Models\SourceExport
-    list: $/adrenth/rssfetcher/models/sourceexport/columns.yaml
-    redirect: adrenth/rssfetcher/sources
-    permissions: adrenth.rssfetcher.access_import_export
+    title: khalilthiero.rssfetcher::lang.source.export_sources
+    modelClass: Khalilthiero\RssFetcher\Models\SourceExport
+    list: $/khalilthiero/rssfetcher/models/sourceexport/columns.yaml
+    redirect: khalilthiero/rssfetcher/sources
+    permissions: khalilthiero.rssfetcher.access_import_export
     filename: sources.csv

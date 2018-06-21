@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Adrenth\RssFetcher\Models\Feed as FeedModel;
-use Adrenth\RssFetcher\Models\Item;
-use Adrenth\RssFetcher\Models\Source;
+use Khalilthiero\RssFetcher\Models\Feed as FeedModel;
+use Khalilthiero\RssFetcher\Models\Item;
+use Khalilthiero\RssFetcher\Models\Source;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Response;
@@ -25,8 +25,8 @@ Route::get('/feeds/{path}', function ($path) {
     $feed->setTitle($model->getAttribute('title'))
         ->setDescription($model->getAttribute('description'))
         ->setBaseUrl(Url::to('/'))
-        ->setGenerator('OctoberCMS/Adrenth.RssFetcher')
-        ->setId('Adrenth.RssFecther.' . $model->getAttribute('id'))
+        ->setGenerator('OctoberCMS/khalilthiero.RssFetcher')
+        ->setId('khalilthiero.RssFecther.' . $model->getAttribute('id'))
         ->setLink(Url::to('/feeds/' . $path))
         ->setFeedLink(Url::to('/feeds/' . $path), $model->getAttribute('type'))
         ->setDateModified()

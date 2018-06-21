@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Adrenth\RssFetcher\Controllers;
+namespace Khalilthiero\RssFetcher\Controllers;
 
 use Backend\Behaviors\FormController;
 use Backend\Behaviors\ListController;
@@ -12,7 +12,7 @@ use Backend\Classes\Controller;
 /**
  * Class Feeds
  *
- * @package Adrenth\RssFetcher\Controllers
+ * @package Khalilthiero\RssFetcher\Controllers
  * @mixin FormController
  * @mixin ListController
  */
@@ -39,6 +39,6 @@ class Feeds extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('Adrenth.RssFetcher', 'rssfetcher', 'feeds');
+        BackendMenu::setContext('khalilthiero.RssFetcher', 'rssfetcher', 'feeds');
     }
 }

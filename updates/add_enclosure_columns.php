@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Adrenth\RssFetcher\Updates;
+namespace Khalilthiero\RssFetcher\Updates;
 
 use Illuminate\Database\Schema\Blueprint;
 use October\Rain\Database\Updates\Migration;
@@ -13,13 +13,13 @@ use Schema;
 /**
  * Class AddEnclosureColumn
  *
- * @package Adrenth\RssFetcher\Updates
+ * @package Khalilthiero\RssFetcher\Updates
  */
 class AddEnclosureColumn extends Migration
 {
     public function up()
     {
-        Schema::table('adrenth_rssfetcher_items', function (Blueprint $table) {
+        Schema::table('khalilthiero_rssfetcher_items', function (Blueprint $table) {
             $table->string('enclosure_type')
                 ->nullable()
                 ->after('comments');
@@ -34,7 +34,7 @@ class AddEnclosureColumn extends Migration
 
     public function down()
     {
-        Schema::table('adrenth_rssfetcher_items', function (Blueprint $table) {
+        Schema::table('khalilthiero_rssfetcher_items', function (Blueprint $table) {
             $table->dropColumn([
                 'enclosure_url',
                 'enclosure_length',

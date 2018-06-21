@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Adrenth\RssFetcher\Components;
+namespace Khalilthiero\RssFetcher\Components;
 
-use Adrenth\RssFetcher\Models\Source;
+use Khalilthiero\RssFetcher\Models\Source;
 use Cms\Classes\ComponentBase;
 use InvalidArgumentException;
 use October\Rain\Support\Collection;
@@ -12,7 +12,7 @@ use October\Rain\Support\Collection;
 /**
  * Class Sources
  *
- * @package Adrenth\RssFetcher\Components
+ * @package Khalilthiero\RssFetcher\Components
  */
 class Sources extends ComponentBase
 {
@@ -27,8 +27,8 @@ class Sources extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name' => 'adrenth.rssfetcher::lang.component.source_list.name',
-            'description' => 'adrenth.rssfetcher::lang.component.source_list.description',
+            'name' => 'khalilthiero.rssfetcher::lang.component.source_list.name',
+            'description' => 'khalilthiero.rssfetcher::lang.component.source_list.description',
         ];
     }
 

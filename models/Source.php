@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Adrenth\RssFetcher\Models;
+namespace Khalilthiero\RssFetcher\Models;
 
 use Model;
 use October\Rain\Database\Traits\Validation;
@@ -17,7 +17,7 @@ class Source extends Model
     /**
      * {@inheritdoc}
      */
-    public $table = 'adrenth_rssfetcher_sources';
+    public $table = 'khalilthiero_rssfetcher_sources';
 
     /**
      * {@inheritdoc}

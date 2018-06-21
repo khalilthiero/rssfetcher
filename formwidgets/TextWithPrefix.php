@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace Adrenth\RssFetcher\FormWidgets;
+namespace Khalilthiero\RssFetcher\FormWidgets;
 
 use Backend\Classes\FormWidgetBase;
 
 /**
  * Class TextWithPrefix
  *
- * @package Adrenth\RssFetcher\FormWidgets
+ * @package Khalilthiero\RssFetcher\FormWidgets
  */
 class TextWithPrefix extends FormWidgetBase
 {
     /**
      * {@inheritDoc}
      */
-    protected $defaultAlias = 'adrenth_rssfetcher_text_with_prefix';
+    protected $defaultAlias = 'khalilthiero_rssfetcher_text_with_prefix';
 
     /**
      * {@inheritdoc}

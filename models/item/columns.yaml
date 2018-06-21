@@ -4,19 +4,19 @@
 
 columns:
     source:
-        label: adrenth.rssfetcher::lang.source.source
+        label: khalilthiero.rssfetcher::lang.source.source
         searchable: true
         relation: source
         select: name
     title:
-        label: adrenth.rssfetcher::lang.item.title
+        label: khalilthiero.rssfetcher::lang.item.title
         searchable: true
         type: text
     is_published:
-        label:  adrenth.rssfetcher::lang.item.is_published
+        label:  khalilthiero.rssfetcher::lang.item.is_published
         type: switch
     pub_date:
-        label: adrenth.rssfetcher::lang.item.published_at
+        label: khalilthiero.rssfetcher::lang.item.published_at
         type: datetime
     item_id:
         label: ID

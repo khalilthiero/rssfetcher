@@ -1,8 +1,8 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
-namespace Adrenth\RssFetcher;
+namespace Khalilthiero\RssFetcher;
 
 use Backend;
 use System\Classes\PluginBase;
@@ -10,40 +10,36 @@ use System\Classes\PluginBase;
 /**
  * Class Plugin
  *
- * @package Adrenth\RssFetcher
+ * @package Khalilthiero\RssFetcher
  */
-class Plugin extends PluginBase
-{
+class Plugin extends PluginBase {
+
     /**
      * {@inheritdoc}
      */
-    public function pluginDetails(): array
-    {
+    public function pluginDetails(): array {
         return [
-            'name' => 'adrenth.rssfetcher::lang.plugin.name',
-            'description' => 'adrenth.rssfetcher::lang.plugin.name',
-            'author' => 'A. Drenth <adrenth@gmail.com>',
+            'name' => 'khalilthiero.rssfetcher::lang.plugin.name',
+            'description' => 'khalilthiero.rssfetcher::lang.plugin.name',
+            'author' => 'A. Drenth <khalilthiero@gmail.com>',
             'icon' => 'icon-rss',
-            'homepage' => 'http://github.com/adrenth/rssfetcher'
+            'homepage' => 'http://github.com/khalilthiero/rssfetcher'
         ];
     }
 
     /**
      * {@inheritdoc}
      */
-    public function register()
-    {
+    public function register() {
         $this->registerConsoleCommand(
-            'Adrenth.RssFetcher',
-            Commands\FetchRssCommand::class
+                'khalilthiero.RssFetcher', Commands\FetchRssCommand::class
         );
     }
 
     /**
      * {@inheritdoc}
      */
-    public function registerComponents(): array
-    {
+    public function registerComponents(): array {
         return [
             Components\Items::class => 'rssItems',
             Components\PaginatableItems::class => 'rssPaginatableItems',
@@ -54,8 +50,7 @@ class Plugin extends PluginBase
     /**
      * {@inheritdoc}
      */
-    public function registerReportWidgets(): array
-    {
+    public function registerReportWidgets(): array {
         return [
             ReportWidgets\Headlines::class => [
                 'label' => 'RSS Headlines',
@@ -67,24 +62,23 @@ class Plugin extends PluginBase
     /**
      * {@inheritdoc}
      */
-    public function registerPermissions(): array
-    {
+    public function registerPermissions(): array {
         return [
-            'adrenth.rssfetcher.access_sources' => [
-                'tab' => 'adrenth.rssfetcher::lang.plugin.name',
-                'label' => 'adrenth.rssfetcher::lang.permissions.access_sources'
+            'khalilthiero.rssfetcher.access_sources' => [
+                'tab' => 'khalilthiero.rssfetcher::lang.plugin.name',
+                'label' => 'khalilthiero.rssfetcher::lang.permissions.access_sources'
             ],
-            'adrenth.rssfetcher.access_items' => [
-                'tab' => 'adrenth.rssfetcher::lang.plugin.name',
-                'label' => 'adrenth.rssfetcher::lang.permissions.access_items'
+            'khalilthiero.rssfetcher.access_items' => [
+                'tab' => 'khalilthiero.rssfetcher::lang.plugin.name',
+                'label' => 'khalilthiero.rssfetcher::lang.permissions.access_items'
             ],
-            'adrenth.rssfetcher.access_import_export' => [
-                'tab' => 'adrenth.rssfetcher::lang.plugin.name',
-                'label' => 'adrenth.rssfetcher::lang.permissions.access_import_export'
+            'khalilthiero.rssfetcher.access_import_export' => [
+                'tab' => 'khalilthiero.rssfetcher::lang.plugin.name',
+                'label' => 'khalilthiero.rssfetcher::lang.permissions.access_import_export'
             ],
-            'adrenth.rssfetcher.access_feeds' => [
-                'tab' => 'adrenth.rssfetcher::lang.plugin.name',
-                'label' => 'adrenth.rssfetcher::lang.permissions.access_feeds'
+            'khalilthiero.rssfetcher.access_feeds' => [
+                'tab' => 'khalilthiero.rssfetcher::lang.plugin.name',
+                'label' => 'khalilthiero.rssfetcher::lang.permissions.access_feeds'
             ]
         ];
     }
@@ -92,33 +86,32 @@ class Plugin extends PluginBase
     /**
      * {@inheritdoc}
      */
-    public function registerNavigation(): array
-    {
+    public function registerNavigation(): array {
         return [
             'rssfetcher' => [
-                'label' => 'adrenth.rssfetcher::lang.navigation.menu_label',
-                'url' => Backend::url('adrenth/rssfetcher/sources'),
+                'label' => 'khalilthiero.rssfetcher::lang.navigation.menu_label',
+                'url' => Backend::url('khalilthiero/rssfetcher/sources'),
                 'icon' => 'icon-rss',
-                'permissions' => ['adrenth.rssfetcher.*'],
+//                'permissions' => ['khalilthiero.rssfetcher.*'],
                 'order' => 500,
                 'sideMenu' => [
                     'sources' => [
-                        'label' => 'adrenth.rssfetcher::lang.navigation.side_menu_label_sources',
+                        'label' => 'khalilthiero.rssfetcher::lang.navigation.side_menu_label_sources',
                         'icon' => 'icon-globe',
-                        'url' => Backend::url('adrenth/rssfetcher/sources'),
-                        'permissions' => ['adrenth.rssfetcher.access_sources']
+                        'url' => Backend::url('khalilthiero/rssfetcher/sources'),
+                        'permissions' => ['khalilthiero.rssfetcher.access_sources']
                     ],
                     'items' => [
-                        'label' => 'adrenth.rssfetcher::lang.navigation.side_menu_label_items',
+                        'label' => 'khalilthiero.rssfetcher::lang.navigation.side_menu_label_items',
                         'icon' => 'icon-files-o',
-                        'url' => Backend::url('adrenth/rssfetcher/items'),
-                        'permissions' => ['adrenth.rssfetcher.access_items']
+                        'url' => Backend::url('khalilthiero/rssfetcher/items'),
+                        'permissions' => ['khalilthiero.rssfetcher.access_items']
                     ],
                     'feeds' => [
-                        'label' => 'adrenth.rssfetcher::lang.navigation.side_menu_label_feeds',
+                        'label' => 'khalilthiero.rssfetcher::lang.navigation.side_menu_label_feeds',
                         'icon' => 'icon-rss',
-                        'url' => Backend::url('adrenth/rssfetcher/feeds'),
-                        'permissions' => ['adrenth.rssfetcher.access_feeds']
+                        'url' => Backend::url('khalilthiero/rssfetcher/feeds'),
+                        'permissions' => ['khalilthiero.rssfetcher.access_feeds']
                     ]
                 ]
             ]
@@ -128,10 +121,10 @@ class Plugin extends PluginBase
     /**
      * {@inheritdoc}
      */
-    public function registerFormWidgets(): array
-    {
+    public function registerFormWidgets(): array {
         return [
             FormWidgets\TextWithPrefix::class => 'textWithPrefix'
         ];
     }
+
 }
