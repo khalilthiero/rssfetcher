@@ -53,7 +53,7 @@ class Sources extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('khalilthiero.RssFetcher', 'rssfetcher', 'sources');
+        BackendMenu::setContext('Khalilthiero.RssFetcher', 'rssfetcher', 'sources');
     }
 
     /**

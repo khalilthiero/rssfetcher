@@ -39,6 +39,6 @@ class Feeds extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('khalilthiero.RssFetcher', 'rssfetcher', 'feeds');
+        BackendMenu::setContext('Khalilthiero.RssFetcher', 'rssfetcher', 'feeds');
     }
 }

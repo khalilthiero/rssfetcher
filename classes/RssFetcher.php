@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Khalilthiero\RssFetcher\Classes;
 
@@ -19,8 +19,8 @@ use Zend\Feed\Reader\Reader;
  *
  * @package Khalilthiero\RssFetcher\Classes
  */
-class RssFetcher
-{
+class RssFetcher {
+
     use Singleton;
 
     /**
@@ -28,8 +28,7 @@ class RssFetcher
      *
      * @param int|null $sourceId
      */
-    public function fetch(int $sourceId = null)
-    {
+    public function fetch(int $sourceId = null) {
         $sources = $this->getSourceCollection($sourceId);
         $sources->each(function (Source $source) {
             try {
@@ -43,8 +42,7 @@ class RssFetcher
     /**
      * @param Source $source
      */
-    private function fetchSource(Source $source)
-    {
+    private function fetchSource(Source $source) {
         $channel = Reader::import($source->getAttribute('source_url'));
         $maxItems = $source->getAttribute('max_items');
 
@@ -80,8 +78,10 @@ class RssFetcher
                 $attributes['author'] = implode(', ', $item->getAuthors());
             }
 
-            Item::firstOrCreate($attributes);
-
+            $itemCreated = Item::firstOrCreate($attributes);
+            if ($source->getAttribute('publish_new_items')) {
+                $itemCreated->publishToBlog();
+            }
             if ($maxItems > 0 && $itemCount >= $maxItems) {
                 break;
             }
@@ -95,25 +95,25 @@ class RssFetcher
      * @param int|null $sourceId
      * @return Collection
      */
-    private function getSourceCollection(int $sourceId = null): Collection
-    {
+    private function getSourceCollection(int $sourceId = null): Collection {
         $sources = new Collection();
 
         if ($sourceId !== null) {
             $source = Source::query()
-                ->where('id', '=', $sourceId)
-                ->where('is_enabled', '=', true)
-                ->first();
+                    ->where('id', '=', $sourceId)
+                    ->where('is_enabled', '=', true)
+                    ->first();
 
             if ($source) {
                 $sources = new Collection([$source]);
             }
         } else {
             $sources = Source::query()
-                ->where('is_enabled', '=', true)
-                ->get();
+                    ->where('is_enabled', '=', true)
+                    ->get();
         }
 
         return $sources;
     }
+
 }
