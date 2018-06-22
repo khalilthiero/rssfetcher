@@ -30,3 +30,9 @@
   - add_enclosure_columns.php
 2.1.1: Fix critical issue in Dashboard Widget Headlines
 2.1.2: Fixes `open_basedir` restriction in effect issue
+3.0.0: Creation of the fork
+3.0.1: changing global namespace
+3.0.2: changing databases schema
+3.0.3:
+  - Add categories to feeds and sources
+  - add_categories_to_feeds_and_sources.php

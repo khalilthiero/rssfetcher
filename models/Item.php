@@ -87,10 +87,9 @@ class Item extends Model {
             }
         }
         //Get category tags
-        $categories = explode(',', $this->source->category);
-        foreach ($categories as $category) {
+        foreach ($this->source->categories as $categoryModel) {
             //get category
-            $category = trim($category);
+            $category = trim($categoryModel->name);
             $postCategory = $blogCategoryClass::where(['name' => $category])->first();
             if (is_null($postCategory)) {
                 continue;

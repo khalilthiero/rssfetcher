@@ -48,4 +48,14 @@ class Source extends Model
             'count' => true
         ]
     ];
+     /**
+     * {@inheritdoc}
+     */
+    public $belongsToMany = [
+        'categories' => [
+            'RainLab\Blog\Models\Category',
+            'table' => 'khalilthiero_rssfetcher_categories_sources',
+            'order' => 'name'
+        ]
+    ];
 }

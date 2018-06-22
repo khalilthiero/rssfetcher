@@ -23,10 +23,14 @@ fields:
         comment: khalilthiero.rssfetcher::lang.source.max_items_description
         default: 10
         span: left
-    category:
-        label: khalilthiero.rssfetcher::lang.source.category
-        type: text
+    categories:
+        label: khalilthiero.rssfetcher::lang.source.categories
+        nameFrom: name
         span: right
+        required: true
+        type: taglist
+        mode: relation
+        separator: space
     is_enabled:
         label: khalilthiero.rssfetcher::lang.source.enabled
         type: switch
