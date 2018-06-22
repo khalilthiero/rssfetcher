@@ -36,3 +36,4 @@
 3.0.3:
   - Add categories to feeds and sources
   - add_categories_to_feeds_and_sources.php
+3.0.4: Adding rssfeeds by categories

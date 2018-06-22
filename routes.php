@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 use Khalilthiero\RssFetcher\Models\Feed as FeedModel;
 use Khalilthiero\RssFetcher\Models\Item;
@@ -11,70 +11,73 @@ use Illuminate\Support\Facades\Response;
 use Zend\Feed\Exception\InvalidArgumentException;
 use Zend\Feed\Writer\Entry;
 use Zend\Feed\Writer\Feed;
-
+use RainLab\Blog\Models\Post;
+use System\Models\File;
 Route::get('/feeds/{path}', function ($path) {
 
     /** @var FeedModel $model */
-    $model = FeedModel::where('path', '=', $path)->first();
-
-    if ($model === null) {
+    $model = FeedModel::where(['path' => $path, 'is_enabled' => 1])->first();
+    if (is_null($model)) {
         return Response::make('Not Found', 404);
     }
 
     $feed = new Feed();
     $feed->setTitle($model->getAttribute('title'))
-        ->setDescription($model->getAttribute('description'))
-        ->setBaseUrl(Url::to('/'))
-        ->setGenerator('OctoberCMS/khalilthiero.RssFetcher')
-        ->setId('khalilthiero.RssFecther.' . $model->getAttribute('id'))
-        ->setLink(Url::to('/feeds/' . $path))
-        ->setFeedLink(Url::to('/feeds/' . $path), $model->getAttribute('type'))
-        ->setDateModified()
-        ->addAuthor(['name' => 'OctoberCMS']);
+            ->setDescription($model->getAttribute('description'))
+            ->setBaseUrl(Url::to('/'))
+            ->setGenerator('OctoberCMS/khalilthiero.RssFetcher')
+            ->setId('khalilthiero.RssFecther.' . $model->getAttribute('id'))
+            ->setLink(Url::to('/feeds/' . $path))
+            ->setFeedLink(Url::to('/feeds/' . $path), $model->getAttribute('type'))
+            ->setDateModified()
+            ->addAuthor(['name' => 'OctoberCMS']);
 
     /** @var Collection $sources */
-    $sources = $model->sources;
-    $ids = Arr::pluck($sources->toArray(), 'id');
-    $items = [];
-
-    Source::with(['items' => function ($builder) use (&$items, $model) {
-        $items = $builder->where('is_published', '=', 1)
-            ->whereDate('pub_date', '<=', date('Y-m-d'))
-            ->orderBy('pub_date', 'desc')
+    $categories = $model->categories;
+    $ids = Arr::pluck($categories->toArray(), 'id');
+    $posts = [];
+    $blogPostClass = 'RainLab\\Blog\\Models\\Post';
+    $posts = $blogPostClass::where('published', '=', 1)
+            ->whereDate('published_at', '<=', date('Y-m-d'))
+            ->whereHas('categories', function($query)use ($ids) {
+                $query->where('rainlab_blog_categories.id', $ids);
+            })
+            ->orderBy('published_at', 'desc')
             ->limit($model->getAttribute('max_items'))
             ->get();
-    }])->whereIn('id', $ids)
-        ->where('is_enabled', '=', 1)
-        ->get();
 
-    /** @var Item $item */
-    foreach ($items as $item) {
+    /** @var Post $post */
+    foreach ($posts as $post) {
         try {
             $entry = new Entry();
+            $postLink = url($post->getAttribute('slug'));
+            $description = $post->getAttribute('content');
+            $entry->setId((string) $post->getAttribute('id'))
+                    ->setTitle($post->getAttribute('title'))
+                    ->setDescription($description)
+                    ->setLink($postLink)
+                    ->setDateModified($post->getAttribute('published_at'));
 
-            $entry->setId((string) $item->getAttribute('id'))
-                ->setTitle($item->getAttribute('title'))
-                ->setDescription($item->getAttribute('description'))
-                ->setLink($item->getAttribute('link'))
-                ->setDateModified($item->getAttribute('pub_date'));
-
-            $comments = $item->getAttribute('comments');
+//            $comments = $post->getAttribute('comments');
+            $comments = null;
             if (!empty($comments)) {
                 $entry->setCommentLink($comments);
             }
 
-            $category = $item->getAttribute('category');
-            if (!empty($category)) {
-                $entry->addCategory(['term' => $category]);
+            $categories = $post->categories;
+
+            if (!empty($categories)) {
+                foreach ($categories as $category) {
+                    $entry->addCategory(['term' => $category->name]);
+                }
             }
 
-            $enclosureUrl = $item->getAttribute('enclosure_url');
-
+            $enclosureUrl = $post->featured_images()->first();
             if (!empty($enclosureUrl)) {
                 $entry->setEnclosure([
-                    'uri' => $enclosureUrl,
-                    'type' => $item->getAttribute('enclosure_type'),
-                    'length' => $item->getAttribute('enclosure_length'),
+                    'uri' => $enclosureUrl->getPath(),
+                    'type' => $enclosureUrl->getContentType(),
+                    'length' => 0,
                 ]);
             }
 
@@ -85,6 +88,6 @@ Route::get('/feeds/{path}', function ($path) {
     }
 
     return Response::make($feed->export($model->getAttribute('type')), 200, [
-        'Content-Type' => sprintf('application/%s+xml', $model->getAttribute('type')),
+                'Content-Type' => sprintf('application/%s+xml', $model->getAttribute('type')),
     ]);
 });
