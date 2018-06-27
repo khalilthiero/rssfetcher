@@ -17,14 +17,24 @@ fields:
         options:
             rss: RSS
             atom: Atom
-    categories:
-        label: khalilthiero.rssfetcher::lang.feed.categories
+    bpcategories:
+        label: khalilthiero.rssfetcher::lang.feed.bpcategories
         nameFrom: name
         span: right
-        required: true
+        required: false
         type: taglist
         mode: relation
         separator: space
+        customTags: false
+    rsscategories:
+        label: khalilthiero.rssfetcher::lang.feed.rsscategories
+        nameFrom: name
+        span: right
+        required: false
+        type: taglist
+        mode: relation
+        separator: space
+        customTags: false
     description:
         label: khalilthiero.rssfetcher::lang.feed.description
         type: textarea

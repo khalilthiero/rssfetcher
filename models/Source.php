@@ -52,9 +52,9 @@ class Source extends Model
      * {@inheritdoc}
      */
     public $belongsToMany = [
-        'categories' => [
-            'RainLab\Blog\Models\Category',
-            'table' => 'khalilthiero_rssfetcher_categories_sources',
+        'rsscategories' => [
+            'Khalilthiero\RssFetcher\Models\Category',
+            'table' => 'khalilthiero_rssfetcher_rsscategories_sources',
             'order' => 'name'
         ]
     ];

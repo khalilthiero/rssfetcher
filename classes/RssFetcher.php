@@ -79,9 +79,9 @@ class RssFetcher {
             }
 
             $itemCreated = Item::firstOrCreate($attributes);
-            if ($source->getAttribute('publish_new_items')) {
-                $itemCreated->publishToBlog();
-            }
+//            if ($source->getAttribute('publish_new_items')) {
+//                $itemCreated->publishToBlog();
+//            }
             if ($maxItems > 0 && $itemCount >= $maxItems) {
                 break;
             }

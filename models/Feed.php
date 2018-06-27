@@ -25,9 +25,14 @@ class Feed extends Model
      * {@inheritdoc}
      */
     public $belongsToMany = [
-        'categories' => [
+        'bpcategories' => [
             'RainLab\Blog\Models\Category',
-            'table' => 'khalilthiero_rssfetcher_categories_feeds',
+            'table' => 'khalilthiero_rssfetcher_bpcategories_feeds',
+            'order' => 'name'
+        ],
+        'rsscategories' => [
+            'Khalilthiero\RssFetcher\Models\Category',
+            'table' => 'khalilthiero_rssfetcher_rsscategories_feeds',
             'order' => 'name'
         ]
     ];
