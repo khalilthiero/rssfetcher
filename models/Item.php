@@ -30,6 +30,7 @@ class Item extends Model {
         'item_id',
         'post_id',
         'title',
+        'slug',
         'link',
         'description',
         'author',
@@ -55,6 +56,12 @@ class Item extends Model {
     public $belongsTo = [
         'source' => Source::class
     ];
+    /*
+     * Validation
+     */
+    public $rules = [
+        'slug' => 'required|between:3,64|unique:khalilthiero_rssfetcher_items',
+    ];
 
     /**
      * Allows filtering for specifc sources
@@ -67,6 +74,12 @@ class Item extends Model {
         return $query->whereHas('source', function ($q) use ($sources) {
                     $q->whereIn('id', $sources);
                 });
+    }
+    public function beforeValidate() {
+        // Generate a URL slug for this model
+        if (!$this->exists && !$this->slug) {
+            $this->slug = Str::slug($this->title);
+        }
     }
 
     public function publishToBlog($_publish = true) {

@@ -13,6 +13,7 @@ use Log;
 use October\Rain\Support\Traits\Singleton;
 use Zend\Feed\Reader\Entry\Rss;
 use Zend\Feed\Reader\Reader;
+use Str;
 
 /**
  * Class RssFetcher
@@ -58,6 +59,7 @@ class RssFetcher {
                 'item_id' => $item->getId(),
                 'source_id' => $source->getAttribute('id'),
                 'title' => $item->getTitle(),
+                'slug' => Str::slug($item->getTitle()),
                 'link' => $item->getLink(),
                 'description' => strip_tags($item->getContent()),
                 'tags' => implode(', ', $item->getCategories()->getValues()),

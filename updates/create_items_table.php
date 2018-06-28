@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Khalilthiero\RssFetcher\Updates;
 
@@ -15,10 +15,9 @@ use Schema;
  *
  * @package Khalilthiero\RssFetcher\Updates
  */
-class CreateItemsTable extends Migration
-{
-    public function up()
-    {
+class CreateItemsTable extends Migration {
+
+    public function up() {
         Schema::create('khalilthiero_rssfetcher_items', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -26,6 +25,7 @@ class CreateItemsTable extends Migration
             $table->unsignedInteger('post_id')->nullable();
             $table->string('item_id', 191)->unique('item_id_unique');
             $table->string('title')->nullable();
+            $table->string('slug')->nullable()->index();
             $table->string('link')->nullable();
             $table->mediumText('description')->nullable();
             $table->string('author')->nullable();
@@ -36,14 +36,14 @@ class CreateItemsTable extends Migration
             $table->timestamp('updated_at')->nullable();
 
             $table->foreign('source_id', 'items_source_id_foreign')
-                ->references('id')
-                ->on('khalilthiero_rssfetcher_sources')
-                ->onDelete('cascade');
+                    ->references('id')
+                    ->on('khalilthiero_rssfetcher_sources')
+                    ->onDelete('cascade');
         });
     }
 
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('khalilthiero_rssfetcher_items');
     }
+
 }

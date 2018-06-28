@@ -50,6 +50,7 @@ return [
     'item' => [
         'item' => 'Item',
         'items' => 'Items',
+        'rsscategory' => 'RSS Category',
         'items_per_page' => 'Number of items per page',
         'items_per_page_validation' => 'Invalid format of the items per page value',
         'new_item' => 'New Item',
@@ -103,6 +104,10 @@ return [
         'item_list' => [
             'name' => 'Item List',
             'description' => 'Displays a list of latest RSS items.',
+        ],
+        'item_by_category' => [
+            'name' => 'Item By Category List',
+            'description' => 'Displays a list of latest RSS items by category.',
         ],
         'paginatable_item_list' => [
             'name' => 'Paginatable Item List',

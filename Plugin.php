@@ -42,6 +42,7 @@ class Plugin extends PluginBase {
     public function registerComponents(): array {
         return [
             Components\Items::class => 'rssItems',
+            Components\ItemsByCategory::class => 'rssItemsByCateogry',
             Components\PaginatableItems::class => 'rssPaginatableItems',
             Components\Sources::class => 'rssSources'
         ];
