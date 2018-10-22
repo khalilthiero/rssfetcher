@@ -1,21 +1,21 @@
-# ===================================
-#  List Column Definitions
-# ===================================
-
 columns:
     title:
-        label: khalilthiero.rssfetcher::lang.feed.title
+        label: 'khalilthiero.rssfetcher::lang.feed.title'
+        type: text
         searchable: true
     type:
-        label: khalilthiero.rssfetcher::lang.feed.type
-        searchable: false
+        label: 'khalilthiero.rssfetcher::lang.feed.type'
+        type: text
     path:
-        label: khalilthiero.rssfetcher::lang.feed.path
-        searchable: false
+        label: 'khalilthiero.rssfetcher::lang.feed.path'
+        type: text
     max_items:
-        label: khalilthiero.rssfetcher::lang.feed.max_items
-        searchable: false
+        label: 'khalilthiero.rssfetcher::lang.feed.max_items'
+        type: number
     is_enabled:
-        label: khalilthiero.rssfetcher::lang.feed.enabled
+        label: 'khalilthiero.rssfetcher::lang.feed.enabled'
         searchable: false
         type: switch
+    lang:
+        label: 'khalilthiero.rssfetcher::lang.fields.lang'
+        type: text

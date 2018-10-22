@@ -21,7 +21,7 @@ class CreateFeedsTable extends Migration {
         Schema::create('khalilthiero_rssfetcher_feeds', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->enum('type', ['rss', 'atom']);
+            $table->string('type');
             $table->string('title');
             $table->string('description');
             $table->string('path', 191)->unique('feeds_path_unique');

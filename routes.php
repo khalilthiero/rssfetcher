@@ -39,7 +39,7 @@ Route::get('/feeds/{path}', function ($path) {
     $posts = $blogPostClass::where('published', '=', 1)
             ->whereDate('published_at', '<=', date('Y-m-d'))
             ->whereHas('categories', function($query)use ($blogPostCategoriesIds) {
-                $query->where('rainlab_blog_categories.id', $blogPostCategoriesIds);
+                $query->whereIn('rainlab_blog_categories.id', $blogPostCategoriesIds);
             })
             ->orderBy('published_at', 'desc')
             ->limit($feedModel->getAttribute('max_items'))
@@ -48,14 +48,13 @@ Route::get('/feeds/{path}', function ($path) {
     foreach ($posts as $post) {
         try {
             $entry = new Entry();
-            $postLink = url($post->getAttribute('slug'));
-            $description = $post->getAttribute('content');
+            $postLink = url($post->getTranslateAttribute('slug',$feedModel->lang));
+            $description = $post->getTranslateAttribute('content',$feedModel->lang);
             $entry->setId((string) $post->getAttribute('id'))
-                    ->setTitle($post->getAttribute('title'))
+                    ->setTitle($post->getTranslateAttribute('title',$feedModel->lang))
                     ->setDescription($description)
                     ->setLink($postLink)
                     ->setDateModified($post->getAttribute('published_at'));
-
 //            $comments = $post->getAttribute('comments');
             $comments = null;
             if (!empty($comments)) {
@@ -89,7 +88,7 @@ Route::get('/feeds/{path}', function ($path) {
     $items = Item::where('is_published', '=', 1)
             ->whereDate('pub_date', '<=', date('Y-m-d'))
             ->whereHas('source.rsscategories', function($query)use ($rssCategoriesIds) {
-                $query->where('khalilthiero_rssfetcher_rsscategories_sources.category_id', $rssCategoriesIds);
+                $query->whereIn('khalilthiero_rssfetcher_rsscategories_sources.category_id', $rssCategoriesIds);
             })
             ->with('source')
             ->orderBy('pub_date', 'desc')

@@ -1,15 +1,11 @@
-# ===================================
-#  Form Field Definitions
-# ===================================
-
 fields:
     title:
-        label: khalilthiero.rssfetcher::lang.feed.title
+        label: 'khalilthiero.rssfetcher::lang.feed.title'
         type: text
         required: true
         span: left
     type:
-        label: khalilthiero.rssfetcher::lang.feed.type
+        label: 'khalilthiero.rssfetcher::lang.feed.type'
         type: dropdown
         required: true
         span: right
@@ -17,8 +13,16 @@ fields:
         options:
             rss: RSS
             atom: Atom
+    lang:
+        label: 'khalilthiero.rssfetcher::lang.fields.lang'
+        options:
+            en: English
+            fr: Francais
+        span: auto
+        required: 1
+        type: dropdown
     bpcategories:
-        label: khalilthiero.rssfetcher::lang.feed.bpcategories
+        label: 'khalilthiero.rssfetcher::lang.feed.bpcategories'
         nameFrom: name
         span: right
         required: false
@@ -27,7 +31,7 @@ fields:
         separator: space
         customTags: false
     rsscategories:
-        label: khalilthiero.rssfetcher::lang.feed.rsscategories
+        label: 'khalilthiero.rssfetcher::lang.feed.rsscategories'
         nameFrom: name
         span: right
         required: false
@@ -36,14 +40,14 @@ fields:
         separator: space
         customTags: false
     description:
-        label: khalilthiero.rssfetcher::lang.feed.description
+        label: 'khalilthiero.rssfetcher::lang.feed.description'
         type: textarea
         size: small
         required: true
         span: left
     max_items:
         type: dropdown
-        label: khalilthiero.rssfetcher::lang.feed.max_items
+        label: 'khalilthiero.rssfetcher::lang.feed.max_items'
         default: 10
         span: right
         options:
@@ -52,14 +56,14 @@ fields:
             50: 50
             100: 100
     path:
-        label: khalilthiero.rssfetcher::lang.feed.path
-        placeholder: khalilthiero.rssfetcher::lang.feed.path_placeholder
-        comment: khalilthiero.rssfetcher::lang.feed.path_comment
+        label: 'khalilthiero.rssfetcher::lang.feed.path'
+        placeholder: 'khalilthiero.rssfetcher::lang.feed.path_placeholder'
+        comment: 'khalilthiero.rssfetcher::lang.feed.path_comment'
         span: left
         type: Khalilthiero\RssFetcher\FormWidgets\TextWithPrefix
         required: true
     is_enabled:
-        label: khalilthiero.rssfetcher::lang.feed.enabled
+        label: 'khalilthiero.rssfetcher::lang.feed.enabled'
         type: switch
-        comment: khalilthiero.rssfetcher::lang.feed.enabled_comment
+        comment: 'khalilthiero.rssfetcher::lang.feed.enabled_comment'
         span: left

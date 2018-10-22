@@ -1,6 +1,4 @@
-<?php
-
-return [
+<?php return [
     'plugin' => [
         'name' => 'RSS Fetcher',
         'description' => 'Fetches RSS items from various sources to put on your website',
@@ -129,5 +127,8 @@ return [
             'date_format_title' => 'Date format',
             'date_format_description' => 'Please check official PHP documentation on date formatting on php.net.',
         ],
+    ],
+    'fields' => [
+        'lang' => 'Lang',
     ],
 ];

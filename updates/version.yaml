@@ -1,40 +1,43 @@
 1.0.1:
-  - First version of RssFetcher
-  - create_sources_table.php
-  - create_items_table.php
-1.0.2: Add RSS Headlines dashboard widget
-1.0.3: Add code fixes for to meet PHP 5.4 compatibility
-1.0.4: Add localization (English and Dutch language)
+    - 'First version of RssFetcher'
+    - create_sources_table.php
+    - create_items_table.php
+1.0.2: 'Add RSS Headlines dashboard widget'
+1.0.3: 'Add code fixes for to meet PHP 5.4 compatibility'
+1.0.4: 'Add localization (English and Dutch language)'
 1.0.5:
-  - Add publication settings to Item and Source
-  - add_publish_columns.php
-1.0.6: Prevent overwriting existing Items while fetching RSS feed
-1.0.7: Add filter to item lists and allow user to delete item/sources from list view
-1.0.8: Add a paginatable item component and improve default component templates
-1.0.9: Add export/import functionality for sources and add bulk fetch button to sources list view
+    - 'Add publication settings to Item and Source'
+    - add_publish_columns.php
+1.0.6: 'Prevent overwriting existing Items while fetching RSS feed'
+1.0.7: 'Add filter to item lists and allow user to delete item/sources from list view'
+1.0.8: 'Add a paginatable item component and improve default component templates'
+1.0.9: 'Add export/import functionality for sources and add bulk fetch button to sources list view'
 1.0.10:
-  - Add functionality to create feeds
-  - create_feeds_table.php
-1.0.11: Updates plugin dependencies and some minor fixes
-1.0.12: Minor fixes and optimizations
-1.0.13: Bugfixes and optimizations
-1.0.14: Change database foreign and unique key lengths
-1.0.15: Change database column lengths to support utf8mb4
-1.1.0: Bugfixes and improvements; minimum requirement is now PHP 5.6
-1.2.0: Add German translation (Thank you Pascal Garber)
-2.0.0: !!! Major update: Requires PHP 7.0+ and October CMS build 420+
-2.0.1: Add Source ID property to rssItems component
+    - 'Add functionality to create feeds'
+    - create_feeds_table.php
+1.0.11: 'Updates plugin dependencies and some minor fixes'
+1.0.12: 'Minor fixes and optimizations'
+1.0.13: 'Bugfixes and optimizations'
+1.0.14: 'Change database foreign and unique key lengths'
+1.0.15: 'Change database column lengths to support utf8mb4'
+1.1.0: 'Bugfixes and improvements; minimum requirement is now PHP 5.6'
+1.2.0: 'Add German translation (Thank you Pascal Garber)'
+2.0.0: '!!! Major update: Requires PHP 7.0+ and October CMS build 420+'
+2.0.1: 'Add Source ID property to rssItems component'
 2.1.0:
-  - Add support for the RSS `enclosure` sub-element
-  - add_enclosure_columns.php
-2.1.1: Fix critical issue in Dashboard Widget Headlines
-2.1.2: Fixes `open_basedir` restriction in effect issue
-3.0.0: Creation of the fork
-3.0.1: changing global namespace
-3.0.2: changing databases schema
+    - 'Add support for the RSS `enclosure` sub-element'
+    - add_enclosure_columns.php
+2.1.1: 'Fix critical issue in Dashboard Widget Headlines'
+2.1.2: 'Fixes `open_basedir` restriction in effect issue'
+3.0.0: 'Creation of the fork'
+3.0.1: 'changing global namespace'
+3.0.2: 'changing databases schema'
 3.0.3:
-  - Add categories to feeds and sources
-  - add_categories_to_feeds_and_sources.php
-3.0.4: 
-  - Adding rssfeeds by categories and feeds can now get data from rainlab blog and rss items at the same time
-  - seed_rsscategories_table.php
+    - 'Add categories to feeds and sources'
+    - add_categories_to_feeds_and_sources.php
+3.0.4:
+    - 'Adding rssfeeds by categories and feeds can now get data from rainlab blog and rss items at the same time'
+    - seed_rsscategories_table.php
+3.0.5:
+    - 'Updated table khalilthiero_rssfetcher_feeds'
+    - builder_table_update_khalilthiero_rssfetcher_feeds.php
