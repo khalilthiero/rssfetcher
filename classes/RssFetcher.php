@@ -71,10 +71,9 @@ class RssFetcher
                 'is_published' => $source->getAttribute('publish_new_items')
             ];
 
-            preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $attributes['description'], $image);
+            preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $item->getContent(), $image);
             $enclosure = $item->getEnclosure();
-
-            if (!empty($image) && is_array($image)) {
+            if (!is_array($image) || empty($image['src'])) {
                 $imageExt = pathinfo($enclosure->url, PATHINFO_EXTENSION) ?? 'jpg';
                 $attributes['enclosure_url'] = $image['src'] ?? null;
                 $attributes['enclosure_length'] = null;
