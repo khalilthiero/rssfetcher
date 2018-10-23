@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare (strict_types = 1);
 
 namespace Khalilthiero\RssFetcher\Classes;
 
@@ -20,7 +20,8 @@ use Str;
  *
  * @package Khalilthiero\RssFetcher\Classes
  */
-class RssFetcher {
+class RssFetcher
+{
 
     use Singleton;
 
@@ -29,7 +30,8 @@ class RssFetcher {
      *
      * @param int|null $sourceId
      */
-    public function fetch(int $sourceId = null) {
+    public function fetch(int $sourceId = null)
+    {
         $sources = $this->getSourceCollection($sourceId);
         $sources->each(function (Source $source) {
             try {
@@ -43,7 +45,8 @@ class RssFetcher {
     /**
      * @param Source $source
      */
-    private function fetchSource(Source $source) {
+    private function fetchSource(Source $source)
+    {
         $channel = Reader::import($source->getAttribute('source_url'));
         $maxItems = $source->getAttribute('max_items');
 
@@ -68,9 +71,15 @@ class RssFetcher {
                 'is_published' => $source->getAttribute('publish_new_items')
             ];
 
+            preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $attributes['description'], $image);
             $enclosure = $item->getEnclosure();
 
-            if ($enclosure instanceof \stdClass) {
+            if (!empty($image) && is_array($image)) {
+                $imageExt = pathinfo($enclosure->url, PATHINFO_EXTENSION) ?? 'jpg';
+                $attributes['enclosure_url'] = $image['src'] ?? null;
+                $attributes['enclosure_length'] = null;
+                $attributes['enclosure_type'] = "image/$imageExt";
+            }elseif ($enclosure instanceof \stdClass) {
                 $attributes['enclosure_url'] = $enclosure->url ?? null;
                 $attributes['enclosure_length'] = $enclosure->length ?? null;
                 $attributes['enclosure_type'] = $enclosure->type ?? null;
@@ -97,22 +106,23 @@ class RssFetcher {
      * @param int|null $sourceId
      * @return Collection
      */
-    private function getSourceCollection(int $sourceId = null): Collection {
+    private function getSourceCollection(int $sourceId = null) : Collection
+    {
         $sources = new Collection();
 
         if ($sourceId !== null) {
             $source = Source::query()
-                    ->where('id', '=', $sourceId)
-                    ->where('is_enabled', '=', true)
-                    ->first();
+                ->where('id', '=', $sourceId)
+                ->where('is_enabled', '=', true)
+                ->first();
 
             if ($source) {
                 $sources = new Collection([$source]);
             }
         } else {
             $sources = Source::query()
-                    ->where('is_enabled', '=', true)
-                    ->get();
+                ->where('is_enabled', '=', true)
+                ->get();
         }
 
         return $sources;
