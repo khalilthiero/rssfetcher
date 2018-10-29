@@ -73,17 +73,17 @@ class RssFetcher
 
             preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $item->getContent(), $image);
             $enclosure = $item->getEnclosure();
-            if (!is_array($image) || empty($image['src'])) {
-                $imageExt = pathinfo($enclosure->url, PATHINFO_EXTENSION) ?? 'jpg';
+
+            if (!empty($image['src'])) {
+                $imageExt = pathinfo($image['src'], \PATHINFO_EXTENSION) ?? 'jpg';
                 $attributes['enclosure_url'] = $image['src'] ?? null;
                 $attributes['enclosure_length'] = null;
                 $attributes['enclosure_type'] = "image/$imageExt";
-            }elseif ($enclosure instanceof \stdClass) {
+            } elseif ($enclosure instanceof \stdClass) {
                 $attributes['enclosure_url'] = $enclosure->url ?? null;
                 $attributes['enclosure_length'] = $enclosure->length ?? null;
                 $attributes['enclosure_type'] = $enclosure->type ?? null;
             }
-
             if ($item->getAuthors() !== null && is_array($item->getAuthors())) {
                 $attributes['author'] = implode(', ', $item->getAuthors());
             }
