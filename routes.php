@@ -120,7 +120,7 @@ Route::get('/feeds/{path}', function ($path) {
                     $entry->addCategory(['term' => $category->name]);
                 }
             }
-            if (stripos($item->enclosure_type, 'image') !== false) {
+            if (stripos($item->enclosure_type??'', 'image') !== false) {
                 $entry->setEnclosure([
                     'uri' => $item->enclosure_url,
                     'type' => $item->enclosure_type,
